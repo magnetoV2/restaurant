@@ -1,0 +1,148 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.AddProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+     
+      
+      Title="AddProduct">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="10,14,0,14" Width="790" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="390" ></ColumnDefinition>
+            <ColumnDefinition Width="0" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="7,13,262,15" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Image x:Name="product_image" Margin="10,0,0,0" HorizontalAlignment="Left" Height="89" Width="102"/>
+        </StackPanel>
+        <Border Width="120" Height="34" HorizontalAlignment="Left"  Grid.Column="0" BorderThickness="1" BorderBrush="Orange"  Background="#0095ff" CornerRadius="20" Margin="232,26,0,56">
+            <Button  Name="btnupload"  HorizontalAlignment="Center" Click="Btnupload_Click" FontSize="15"  Background="#0095ff" Width="100" Height="27"  BorderThickness="0" Margin="3" RenderTransformOrigin="1.105,0.148" >Upload</Button>
+
+        </Border>
+        <StackPanel Margin="5,0,0,-21" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Left" Width="387">
+            <Label Content="BarCode" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtBarCode" TextChanged="TxtBarCode_TextChanged"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+            <Label Content="Item Category" Margin="5,0,0,0"/>
+            <Border x:Name="ItemCategory_DropDown_br"
+                    CornerRadius ="2"
+                    Margin="0,10,15,10" 
+                    BorderThickness="1" BorderBrush="{StaticResource CartBlueBrush}" Grid.Row="3" Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                       
+                        <GradientStop Color="#FFFBF2F2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ComboBox x:Name="ItemCategory_DropDown"
+                        Width="372"
+                      FontSize="16"
+                      BorderBrush="{x:Null}"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                      Height="35"
+                     
+                       Background="#FFF7F5F5">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding ItemId}" Visibility="Hidden"  />
+
+                                <TextBlock Text="{Binding Name}"  FontSize="16" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Border>
+            <Label Content="Purchase Price" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtPurchasePrice" TextChanged="TxtPurchasePrice_TextChanged"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+            <Label Content="Minimum Qty." Margin="5,0,0,0"/>
+            <TextBox x:Name="txtMinimum" TextChanged="TxtMinimum_TextChanged"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+            <StackPanel Margin="10">
+                <CheckBox Name="cblPriceEditable"  Height="34" FontSize="16" Margin="0,3,25,3">Price Editable</CheckBox>
+                <CheckBox Name="cblSellOnline"  Height="34" FontSize="16" Margin="0,3,0,3">Sell Online</CheckBox>
+
+
+
+            </StackPanel>
+            <TextBox x:Name="txtProductCATID" Visibility="Hidden"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+
+        </StackPanel>
+        <StackPanel Margin="11,0,-398,-9" Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Left" Width="388" Grid.Column="1" Height="309" VerticalAlignment="Top">
+            <Label Content="Name" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtName"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+            <Label Content="UOM" Margin="5,0,0,0"/>
+            <Border x:Name="UOM_DropDown_DropDown_br"
+                    CornerRadius ="2"
+                 
+
+                    BorderThickness="0.7,1,0.7,1" BorderBrush="{StaticResource CartBlueBrush}" Grid.Row="3" Grid.Column="1" Margin="0,0,15,0">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                       
+                        <GradientStop Color="#FFFBF2F2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ComboBox x:Name="UOM_DropDown"
+                      FontSize="16"
+                      BorderBrush="{x:Null}"
+                      Padding="5"
+                      SelectedIndex="0"
+                      BorderThickness="0"
+                      Height="35"
+                     
+                       Background="#FFF7F5F5" Margin="0,0,0,0">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding UOMId}" Visibility="Hidden"  />
+
+                                <TextBlock Text="{Binding Name}"  FontSize="16" FontFamily="{StaticResource OoredooArabic-Regular}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Border>
+            <Label Content="Sale Price" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtSalePrice" TextChanged="TxtSalePrice_TextChanged"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+            <Label Content="Maximum Qty." Margin="5,0,0,0"/>
+            <TextBox x:Name="txtMaximum" TextChanged="TxtMaximum_TextChanged" BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+            <Border  Grid.Column="8" Height="34" Name="bdSave" Grid.Row="6" Margin="241,40,16,5" Grid.ColumnSpan="4"  BorderThickness="1" BorderBrush="#FF0077CC"  Background="#FF0077CC" CornerRadius="20">
+                <Button x:Name="btnsave" Background="#FF0077CC" FontSize="15"  Click="Btnsave_Click"    BorderThickness="0"  Height="27"  Margin="17,3,19,1">Save</Button>
+            </Border>
+
+        </StackPanel>
+        <Border Grid.Column="1" Width="120" Name="bdCancel" Height="34" Grid.Row="6" Margin="100,3,-234,10" BorderThickness="1" BorderBrush="Orange"  Background="Orange" CornerRadius="20">
+            <Button  x:Name="btnCancel"  Background="orange" FontSize="15"   BorderThickness="0" VerticalAlignment="Top" Height="27" Width="100"  Margin="9,2,9,0"  Click="BtnCancel_Click" >Cancel</Button>
+        </Border>
+        <!--<Button Content="Cancel" Name="btnCancel" Grid.Column="1" HorizontalAlignment="Left" Margin="50,0,-169,0" Grid.Row="6" VerticalAlignment="Top" Width="120" Height="28" Click="BtnCancel_Click" />-->
+
+    </Grid>
+
+</Page>

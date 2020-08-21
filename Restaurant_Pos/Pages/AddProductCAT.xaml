@@ -1,0 +1,45 @@
+﻿<Page x:Class="Restaurant_Pos.Pages.AddProductCAT"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant_Pos.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddProductCAT">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <StackPanel Margin="0,0,656,336">
+            <Image x:Name="product_image" Margin="10,0,-2,0" HorizontalAlignment="Left" Height="104" Width="136">
+
+            </Image>
+        </StackPanel>
+        <Border Width="170" Height="34" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="Orange"  Background="#0095ff" CornerRadius="20" Margin="200,46,0,364">
+            <Button  Name="btnImgUpload"  Height="27" Width="130"  Margin="17,2,9,0" HorizontalAlignment="Center" Click="BtnImgUpload_Click"  FontSize="15"  Background="#0095ff"  BorderThickness="0"   >Upload Image</Button>
+ </Border>
+        <StackPanel Margin="5,119,406,0">
+            <Label Content="Search Key" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtSearchKey"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+            <Label Content="Name" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtName"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+            <Label Content="Category Colour" Margin="5,0,0,0"/>
+            <TextBox x:Name="txtCategory"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+            <CheckBox x:Name="CBL_DigitalMenu"  Content="Digital Menu" Margin="0,3,0,3"/>
+            <CheckBox Name="Self_Service" Content="Self Service" Margin="0,3,0,3"></CheckBox>
+
+            <TextBox x:Name="txtProductCATID" Visibility="Hidden"  BorderBrush="{DynamicResource ForegroundDarkBrush}" Style="{StaticResource Regular_TextBox}" FontSize="14" BorderThickness="1" FontFamily="{StaticResource ooredoo-Regular}"  Margin="0" Padding="2" Height="24" HorizontalAlignment="Left" Width="372" Background="#FFF0F0F0" />
+
+
+        </StackPanel>
+
+        <Border Width="120" Height="34" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="Orange"  Background="#0095ff" CornerRadius="20" Margin="50,400,0,10">
+            <Button  Name="btnSave"  Height="27" Width="100"  Margin="17,2,9,0" HorizontalAlignment="Center" Click="BtnSave_Click" FontSize="15"  Background="#0095ff"  BorderThickness="0"  >Save</Button>
+
+        </Border>
+        <Border Width="120" Height="34" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="Orange"  Background="#0095ff" CornerRadius="20" Margin="251,400,0,10">
+            <Button  Name="btnCancel"  Height="27" Width="100"  Margin="17,2,9,0"  HorizontalAlignment="Center" Click="BtnCancel_Click"  FontSize="15"  Background="#0095ff"  BorderThickness="0"  >Cancel</Button>
+
+        </Border>
+    </Grid>
+</Page>

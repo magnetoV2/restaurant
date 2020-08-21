@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>publish\|windows_retailpos\publish\|managemyfield.com\</PublishUrlHistory>
+    <InstallUrlHistory>https://www.zearo.qa/windows_retailpos/publish/|https://www.zearo.qa/</InstallUrlHistory>
+    <SupportUrlHistory>https://www.zearo.qa/</SupportUrlHistory>
+    <UpdateUrlHistory>https://www.zearo.qa/windows_retailpos/publish/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>https://1drv.ms/u/s!Ao0HX7JJ140sr7Vf-YwTQZacGHvslA</BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>https://www.zearo.qa/</ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

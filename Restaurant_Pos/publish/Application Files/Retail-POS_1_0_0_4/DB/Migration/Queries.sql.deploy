@@ -1,0 +1,26 @@
+/*
+INSERT INTO ad_client(
+            id, ad_client_id, created, createdby, updated, updatedby, attribute1, 
+            attribute2, attribute3, attribute4, attribute5, attribute6, attribute7, 
+            attribute8, attribute9, attribute10)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 
+            ?, ?, ?, ?, ?, ?, 
+            ?, ?, ?);
+
+SELECT id, ad_client_id, created, createdby, updated, updatedby, attribute1, 
+       attribute2, attribute3, attribute4, attribute5, attribute6, attribute7, 
+       attribute8, attribute9, attribute10
+  FROM ad_client;
+
+
+ UPDATE ad_client
+   SET id=?, ad_client_id=?, created=?, createdby=?, updated=?, updatedby=?, 
+       attribute1=?, attribute2=?, attribute3=?, attribute4=?, attribute5=?, 
+       attribute6=?, attribute7=?, attribute8=?, attribute9=?, attribute10=?
+ WHERE ad_client_id = ? AND ad_org_id = ?;
+
+
+ DELETE FROM ad_role
+ WHERE <condition>;
+
+ */

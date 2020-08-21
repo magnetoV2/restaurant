@@ -1,0 +1,852 @@
+﻿    v1
+	
+	<!--   KeyDown="ProductSearch_KeyDown">
+
+    <Border Margin="5" Padding="5">
+
+        <DockPanel LastChildFill="True">
+
+            <Grid DockPanel.Dock="Top" Height="35" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image  Grid.Column="0" Margin="2" Source="/Restaurant_Pos;component/Resources/Images/Icons/search.png" Height="25" Width="25"  HorizontalAlignment="Left"  />
+
+                <TextBox Grid.Column="1"
+                x:Name="ProductSearch" 
+                KeyDown="ProductSearch_KeyDown"
+                Tag="Search the Product here" 
+                Background="{x:Null}" 
+                SelectionBrush="{x:Null}" VerticalContentAlignment="Center" VerticalAlignment="Center"
+                FontSize="20" Foreground="Black" TextChanged="ProductSearch_TextChanged"
+                 />
+                <Rectangle Grid.Column="0" Grid.ColumnSpan="3"
+                Fill="#a9aaad" RadiusX="4" RadiusY="1" Height="1" VerticalAlignment="Bottom" />
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+
+
+                    <DockPanel>
+                        <Border
+                        BorderBrush="#a9aaad" 
+                        BorderThickness="1 0 1 1"
+                            DockPanel.Dock="Bottom" Height="100" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                            <Grid  >
+
+                                <StackPanel VerticalAlignment="Bottom">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock    Text="Subtotal" Margin="0 5 180 0" ></TextBlock>
+                                        <TextBox IsReadOnly="True" x:Name="Subtotal_price"    Text="0.00" Margin="5"></TextBox>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock    Text="Tax" Margin="0 5 225 0"></TextBlock>
+                                        <TextBox IsReadOnly="True" x:Name="Tax"    Text="0.00" Margin="5"></TextBox>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock    Text="TOTAL" Margin="0 5 193 0" ></TextBlock>
+                                        <TextBox IsReadOnly="True" x:Name="Total_price"    Text="0.00" Margin="5"></TextBox>
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <Line Stroke="Black"  HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                              X2="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                              StrokeDashArray="4 2" StrokeThickness="1"  Width="300" Height="35" />
+                            </Grid>
+                        </Border>
+
+
+                        <ListView x:Name="iteamProduct" 
+                         ItemsSource="{Binding ProductIteams}"   Background="{x:Null}" SelectionChanged="IteamProduct_SelectionChanged">
+                            <ListView.View >
+                                <GridView >
+
+                                    <GridViewColumn  Width="190" Header="Product Name"  DisplayMemberBinding="{Binding Product_Name}"/>
+                                    <GridViewColumn  Width="85" Header="Discount" DisplayMemberBinding="{Binding Discount}" />
+                                    <GridViewColumn  Width="85" Header="Quantity" DisplayMemberBinding="{Binding Quantity}" />
+                                    <GridViewColumn  Width="60" Header="Price" DisplayMemberBinding="{Binding Price}" />
+                                    <GridViewColumn  Width="80" Header="Amount" DisplayMemberBinding="{Binding Amount}"   />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+
+
+                    </DockPanel>
+                </Grid>
+
+                <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="8">
+                    <GridSplitter.Template>
+                        <ControlTemplate TargetType="{x:Type GridSplitter}">
+                            <Grid>
+                                <Button Content="⁞" Background="{x:Null}" Foreground="Black" />
+                                <Rectangle Fill="#00FFFFFF" />
+                            </Grid>
+                        </ControlTemplate>
+                    </GridSplitter.Template>
+                </GridSplitter>
+                <Grid Grid.Column="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4">
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="*"  />
+
+                                <ColumnDefinition Width="*" />
+
+                                <ColumnDefinition Width="*" />
+
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="*" />
+
+                                <RowDefinition Height="*" />
+
+                                <RowDefinition Height="*" />
+
+                                <RowDefinition Height="*" />
+
+                            </Grid.RowDefinitions>
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="7"  Grid.Row="0" Grid.Column="0" Height="Auto" Margin="2"   />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="8"  Grid.Row="0" Grid.Column="1" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="9"  Grid.Row="0" Grid.Column="2" Height="Auto"  Margin="2" />
+
+
+                            <Button Click="KeyPadErase_Click" x:Name="KeyPadErase"
+                                     
+                                    Grid.Row="0" Grid.Column="3" Grid.RowSpan="1"  Height="Auto"  Margin="2">
+                                <StackPanel>
+                                    <Image Source="/Restaurant_Pos;component/Resources/Images/Icons/erase.png" 
+                                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Height="25" Width="25" />
+
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="4"  Grid.Row="1" Grid.Column="0" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="5"  Grid.Row="1" Grid.Column="1" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="6"  Grid.Row="1" Grid.Column="2" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="1"  Grid.Row="2" Grid.Column="0" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="2"  Grid.Row="2" Grid.Column="1" Height="Auto"  Margin="2" />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="3"  Grid.Row="2" Grid.Column="2" Height="Auto"  Margin="2" />
+
+                            <Button x:Name="keyPadEnter"   Click="keyPadEnter_Click" 
+                                     Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"
+                                      Foreground="White" Height="Auto"  Margin="2"
+                                >
+                                <Image Source="/Restaurant_Pos;component/Resources/Images/Icons/enter.png" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="0"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="Auto"  Margin="2"  />
+
+                            <Button Click="KeyPad_Click" KeyDown="ProductSearch_KeyDown" Content="."  Grid.Row="3" Grid.Column="2" Height="Auto"  Margin="2" />
+                        </Grid>
+
+
+
+                        <Grid Grid.Row="4" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Delect" FontSize="20" Click="ListViewDelect_Click" Height="Auto"   Margin="2"  Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5" />
+                            <Button  Grid.Column="1" Content="Clear" FontSize="20"  Click="clearAllListIteams" Height="Auto"  Margin="2"     Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5"  />
+                            <Button  Grid.Column="2" Content="Login" FontSize="20" Height="Auto"  Margin="2" Click="Button_Click"            Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5"  />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2"                                  Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5"  />
+                        </Grid>
+                        <Grid Grid.Row="5" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray"   BorderThickness="0.5" />
+                            <Button  Grid.Column="1" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray"   BorderThickness="0.5"  />
+                            <Button  Grid.Column="2" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray"   BorderThickness="0.5" />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray"   BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="6" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5" />
+                            <Button  Grid.Column="1" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5" />
+                            <Button  Grid.Column="2" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5" />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2" Background="{x:Null}" Foreground="Black" BorderBrush="Gray" BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="7" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Cash" FontSize="20" Height="Auto"  Margin="2" BorderThickness="0.5"  />
+                            <Button  Grid.Column="1" Content="Cash" FontSize="20" Height="Auto"  Margin="2" BorderThickness="0.5"  />
+                            <Button  Grid.Column="2" Content="Cash" FontSize="20" Height="Auto"  Margin="2" BorderThickness="0.5"  />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2" BorderThickness="0.5"  />
+                        </Grid>
+                        <Grid Grid.Row="8" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="1" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="2" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                        </Grid>
+                        <Grid Grid.Row="9" Grid.ColumnSpan="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button  Grid.Column="0" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="1" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="2" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                            <Button  Grid.Column="3" Content="Cash" FontSize="20" Height="Auto"  Margin="2"   />
+                        </Grid>
+
+
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+
+
+        </DockPanel>
+    </Border>-->
+
+
+
+	V2
+
+	    <Grid>
+        <DockPanel LastChildFill="True">
+
+            --><!--Nav Bar Panel--><!--
+
+            <Grid DockPanel.Dock="Top" Height="25" VerticalAlignment="Top" Background="Aquamarine" >
+            </Grid>
+
+            --><!--Search Panel--><!--
+
+            <Grid DockPanel.Dock="Top" Height="30" VerticalAlignment="Top" Background="Azure">
+
+            </Grid>
+
+            --><!--Control Panel--><!--
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="8">
+                    <GridSplitter.Template>
+                        <ControlTemplate TargetType="{x:Type GridSplitter}">
+                            <Grid>
+                                <Button Content="⁞"  Margin="0" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                <Rectangle Fill="#00FFFFFF" />
+                            </Grid>
+                        </ControlTemplate>
+                    </GridSplitter.Template>
+                </GridSplitter>
+
+
+
+                --><!--Left Side List View Product Control--><!--
+
+                <Grid Grid.Column="0" Background="Beige">
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Bottom" Height="130" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Blue">
+
+                        </Grid>
+                        <Grid DockPanel.Dock="Bottom" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Chartreuse" >
+
+                        </Grid>
+                        <Grid>
+                            <ListView x:Name="iteamProduct" ItemsSource="{Binding ProductIteams}"  >
+                                <ListView.View >
+                                    <GridView >
+                                        <GridViewColumn  Width="190" Header="Product Name"  DisplayMemberBinding="{Binding Product_Name}"/>
+                                        <GridViewColumn  Width="85" Header="Discount" DisplayMemberBinding="{Binding Discount}" />
+                                        <GridViewColumn  Width="85" Header="Quantity" DisplayMemberBinding="{Binding Quantity}" />
+                                        <GridViewColumn  Width="60" Header="Price" DisplayMemberBinding="{Binding Price}" />
+                                        <GridViewColumn  Width="80" Header="Amount" DisplayMemberBinding="{Binding Amount}"   />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+
+                --><!--END--> 
+
+
+
+
+    <!--Right Side Button Control--><!--
+
+                <Grid Grid.Column="2" Margin="5,0,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.015*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1.2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Height="187" VerticalAlignment="Top" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="17*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button Padding="0" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="8" Height="Auto"                  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0" />
+                            <Button Padding="0" Grid.Column="9" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="9" Height="Auto"   Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Column="19" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="9" Height="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Column="29" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="8" Height="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Row="8" Grid.RowSpan="6" Grid.ColumnSpan="8" Height="Auto"                   Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Column="9" Grid.Row="8" Grid.RowSpan="6" Grid.ColumnSpan="9" Height="Auto"   Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Column="19" Grid.Row="8" Grid.RowSpan="6" Grid.ColumnSpan="9" Height="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                            <Button Padding="0" Grid.Column="29" Grid.Row="8" Grid.RowSpan="6" Grid.ColumnSpan="8" Height="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test" Margin="0"   />
+                        </Grid>
+
+                        <Grid  Grid.Row="2" Height="223" VerticalAlignment="Bottom" Margin="0,0,0,2" >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="1" Margin="2,2,0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Button Height="Auto"                                    Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="1"  Margin="2" />
+                                <Button Height="Auto" Grid.Column="1"                    Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="2"  Margin="2" />
+                                <Button Height="Auto" Grid.Column="2"                    Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="3"  Margin="2" />
+                                <Button Height="Auto" Grid.Column="3"                    Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test"  Margin="2,2,0,2" />
+                                <Button Height="Auto" Grid.Row="1"                       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="4"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="1" Grid.Column="1"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="5"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="1" Grid.Column="2"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="6"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="1" Grid.Column="3"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="C"  Margin="2,2,0,2" FontSize="30" />
+                                <Button Height="Auto" Grid.Row="2"                       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="7"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="2" Grid.Column="1"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="8"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="2" Grid.Column="2"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="0"  Margin="2" />
+                                <Button Height="Auto" Grid.Row="2" Grid.Column="3"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Test"  Margin="2,2,0,2"  Grid.RowSpan="2"/>
+                                <Button Height="Auto" Grid.Row="3" Grid.ColumnSpan="2"   Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="0"  Margin="2"  />
+                                <Button Height="Auto" Grid.Row="3" Grid.Column="2"       Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="."  Margin="2"  />
+                            </Grid>
+
+                            <Grid Grid.Column="0" Margin="0,2,2,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Button Grid.Row="0" Height="Auto" Width="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Reprint" Margin="0,2,2,2"/>
+                                <Button Grid.Row="1" Height="Auto" Width="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Print Pre-Bill" Margin="0,2,2,2"/>
+                                <Button Grid.Row="2" Height="Auto" Width="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Void Order" Margin="0,2,2,2"/>
+                                <Button Grid.Row="3" Height="Auto" Width="Auto"  Style="{StaticResource RegularButton}" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9" Foreground="#454545" Content="Complete" Margin="0,2,2,2"/>
+                                <Label Grid.Row="3" Content="F5" FontFamily="{StaticResource LatoRegular}" FontSize="{StaticResource FontSizeRegular}"/>
+                            </Grid>
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="1" Margin="0,2,0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Background="{x:Null}" Grid.Column="0" Grid.Row="0" Margin="0,2,2,2" BorderBrush="#39b54a" BorderThickness="0,0,0,3">
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Cash" Margin="0" Padding="0"/>
+                            </Border>
+                            <Border Background="{x:Null}" Grid.Column="0" Grid.Row="1" Margin="0,2,2,2" BorderBrush="#3598db" BorderThickness="0,0,0,2">
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Gift Card" Margin="0" Padding="0"/>
+                            </Border>
+                            <Border Background="{x:Null}" Grid.Column="1" Grid.Row="0" Margin="2" BorderBrush="#3598db" BorderThickness="0,0,0,3">
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Credit Card" Margin="0" Padding="0"/>
+                            </Border>
+                            <Border Background="{x:Null}" Grid.Column="1" Grid.Row="1"  Margin="2" BorderBrush="#3598db" BorderThickness="0,0,0,2" >
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Complementary" Margin="0" Padding="0"/>
+                            </Border>
+                            <Border Background="{x:Null}" Grid.Column="2" Grid.Row="0" Margin="2,2,0,2" BorderBrush="#3598db" BorderThickness="0,0,0,3" >
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Dedit Card" Margin="0" Padding="0"/>
+                            </Border>
+                            <Border Background="{x:Null}" Grid.Column="2" Grid.Row="1" Margin="2,2,0,2" BorderBrush="#f26522" BorderThickness="0,0,0,3" >
+                                <Button Height="Auto"  Style="{StaticResource RegularButton}" FontSize="20" Background="White" BorderBrush="#cbcbcb" BorderThickness="0.9,0.9,0.9,0" Foreground="#454545" Content="Split Payment" Margin="0" Padding="0"/>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+
+
+                </Grid>
+
+                --><!--END--><!--
+
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+
+
+	v1 Cs
+
+	using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Restaurant_Pos.Pages.Design.Old
+{
+    /// <summary>
+    /// Interaction logic for RetailPageV1.xaml
+    /// </summary>
+    public partial class RetailPageV1 : Page
+    {
+        public RetailPageV1()
+        {
+            InitializeComponent();
+            //ListView_ProductData();
+        }
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+        ///* OLD */
+        //#region Public Iteams
+        //public object ProductIteams { get; set; }
+        //double addAmount;
+        //public List<Product> items = new List<Product>();
+        //public static int ListView_Index_No;
+        //#endregion
+
+        //private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
+
+        //private void KeyPad_Click(object sender, RoutedEventArgs e)
+
+        //{
+
+        //    Button btn = (Button)e.OriginalSource;
+
+        //    string s = btn.Content.ToString();
+
+        //    ProductSearch.Text += s;
+        //}
+
+        //private void ProductSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+
+        //}
+
+        //private void keyPadEnter_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string objTextBox = ProductSearch.Text;
+        //    if (objTextBox != String.Empty)
+        //    {
+        //        items.Add(new Product() { Product_Name = objTextBox, Discount = 7, Quantity = 1, Price = 20.05, Amount = 20.05 });
+        //        ProductIteams = items;
+        //        DataContext = this;
+        //        ICollectionView view = CollectionViewSource.GetDefaultView(ProductIteams);
+        //        view.Refresh();
+        //        Total_price.Text = String.Empty;
+        //        Subtotal_price.Text = String.Empty;
+        //        foreach (var data in items)
+        //        {
+        //            addAmount += Convert.ToDouble(data.Amount.ToString());
+        //        }
+        //        Total_price.Text = addAmount.ToString();
+        //        Subtotal_price.Text = addAmount.ToString();
+        //        ProductSearch.Text = String.Empty;
+        //    }
+
+
+        //}
+
+        //private void KeyPadErase_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string objTextBox = ProductSearch.Text;
+        //    if (objTextBox != String.Empty)
+        //    {
+        //        ProductSearch.Text = ProductSearch.Text.Remove(ProductSearch.Text.Length - 1);
+        //    }
+        //}
+
+        //private void ListView_ProductData()
+        //{
+
+        //    items.Add(new Product() { Product_Name = "John Doe", Discount = 42, Quantity = 1, Price = 20.21, Amount = 20.21 });
+        //    items.Add(new Product() { Product_Name = "Jane Doe", Discount = 39, Quantity = 2, Price = 20.02, Amount = 20.02 });
+        //    items.Add(new Product() { Product_Name = "Sammy Doe", Discount = 7, Quantity = 1, Price = 20.05, Amount = 20.05 });
+        //    ProductIteams = items;
+
+        //    foreach (var data in items)
+        //    {
+
+        //        addAmount += Convert.ToDouble(data.Amount.ToString());
+        //    }
+        //    Total_price.Text = addAmount.ToString();
+        //    Subtotal_price.Text = addAmount.ToString();
+        //    DataContext = this;
+        //}
+
+        //private void ProductSearch_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter)
+        //    {
+        //        string objTextBox = ProductSearch.Text;
+        //        if (objTextBox != String.Empty)
+        //        {
+        //            items.Add(new Product() { Product_Name = objTextBox, Discount = 7, Quantity = 1, Price = 20.05, Amount = 20.05 });
+        //            ProductIteams = items;
+        //            DataContext = this;
+        //            ICollectionView view = CollectionViewSource.GetDefaultView(ProductIteams);
+        //            view.Refresh();
+        //            Total_price.Text = String.Empty;
+        //            Subtotal_price.Text = String.Empty;
+        //            foreach (var data in items)
+        //            {
+        //                addAmount += Convert.ToDouble(data.Amount.ToString());
+        //            }
+        //            Total_price.Text = addAmount.ToString();
+        //            Subtotal_price.Text = addAmount.ToString();
+        //            ProductSearch.Text = String.Empty;
+        //        }
+
+        //    }
+
+        //    if (e.Key == Key.Back)
+        //    {
+        //        string objTextBox = ProductSearch.Text;
+        //        if (objTextBox != String.Empty)
+        //        {
+        //            ProductSearch.Text = ProductSearch.Text.Remove(ProductSearch.Text.Length - 1);
+        //        }
+        //    }
+        //}
+
+        //private void ListViewDelect_Click(object sender, RoutedEventArgs e)
+        //{
+        //    items.RemoveAt(ListView_Index_No);
+        //    ICollectionView view = CollectionViewSource.GetDefaultView(ProductIteams);
+        //    view.Refresh();
+        //}
+
+        //private void clearAllListIteams(object sender, RoutedEventArgs e)
+        //{
+        //    items.Clear();
+        //    ProductIteams = items;
+        //    DataContext = this;
+        //    Total_price.Text = "0.00";
+        //    Subtotal_price.Text = "0.00";
+        //    ICollectionView view = CollectionViewSource.GetDefaultView(ProductIteams);
+        //    view.Refresh();
+        //}
+        //public ArrayList elems = new ArrayList();
+        //private void IteamProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    object index = e.Source;
+        //    int val = ((System.Windows.Controls.Primitives.Selector)index).SelectedIndex;
+        //    ListView_Index_No = val;
+        //}
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Login;
+        //}
+    }
+}
+
+
+
+
+
+<Grid HorizontalAlignment="Stretch" Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="27*" />
+                            <ColumnDefinition Width="356*" />
+                            <ColumnDefinition Width="68*" />
+                            <ColumnDefinition Width="70*" />
+                            <ColumnDefinition Width="93*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="269*"/>
+                        </Grid.RowDefinitions>
+                        <Button Style="{StaticResource IconButton}" Grid.Column="0"
+                                Content="{StaticResource trashIcon}"
+                                Foreground="Red"
+                                Width="22" Height="27"
+                                 Padding="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Click="DeleteCart_LineIteam_Click" Margin="5,16,0,17"                      
+                                                />
+                        <Grid Grid.Column="1" Margin="5,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <!--Text="{Binding Discount}"
+                            Text="{Binding Quantity}"
+                            Text="{Binding Price}"  
+                            Text="{Binding Amount}"-->
+                            <TextBox x:Name="Discount_Cart_LineIteam"  Grid.Row="0"
+                                     Text="PROFESSIONAL BATTERY TESTER - AMPRO - T71094" 
+                                     DockPanel.Dock="Left"
+                                     FontSize="17"
+                                     Foreground="Black"
+                                     Margin="0" Padding="0"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                     HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+                            <StackPanel Grid.Row="1"  Orientation="Horizontal" Margin="0">
+                                <TextBox x:Name="Barcode_Cart_LineIteam"  
+                                     Text="000ABAS54646" 
+                                         FontWeight="Light"
+                                     FontSize="11"
+                                     Foreground="Black"
+                                     Margin="0"
+                                     Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+
+                                <TextBlock Text="X" 
+                                       FontFamily="{StaticResource ooredoo-Regular}"
+                                       FontSize="11"
+                                       
+                                       Foreground="{StaticResource CartGrayBrush}"
+                                 DockPanel.Dock="Right"
+                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"  
+                                 />
+                                <TextBox x:Name="Price_Cart_LineIteam"  
+                                     Text="150.00" 
+                                     FontSize="16"
+                                     Foreground="{StaticResource CartGrayBrush}"
+                                     Margin="0"
+                                     Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+                            </StackPanel>
+
+                        </Grid>
+
+                        <Border Grid.Column="2" BorderBrush="{StaticResource CartBlueBrush}" 
+                                BorderThickness="0,0,0,1"
+                                Width="60"
+                                >
+                            <Button 
+                                    HorizontalAlignment="Center"
+                                    Width="60"
+                                    Height="55"
+                                    Background="{x:Null}"
+                                    Margin="0"
+                                    Padding="0"
+                                    BorderBrush="{StaticResource CartGrayBrush}"
+                                    BorderThickness="0.5" Click="Quantity_Cart_LineIteam_Click">
+
+                                <TextBox x:Name="Quantity_Cart_LineIteam"  
+                                     Text="2" 
+                                     FontSize="17"
+                                     Foreground="Black"
+                                     Margin="0"
+                                     Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+
+                            </Button>
+                        </Border>
+
+
+                        <Button Grid.Column="3"
+                                    HorizontalAlignment="Center"
+                                    Width="60"
+                                    Height="55"
+                                    Background="{x:Null}"
+                                    Margin="0"
+                                    Padding="0"
+                                    BorderBrush="#FF7F00"
+                                    BorderThickness="2" Click="Discount_Cart_LineIteam_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="Cart_LineIteam_Discount_tx" Text="0" 
+                                     FontSize="20"
+                                     Foreground="{StaticResource CartOrangeBrush}"
+                                     Margin="0" Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+                                <TextBox x:Name="Cart_LineIteam_Discount_sy" Text="%" 
+                                     FontSize="20"
+                                     Foreground="{StaticResource CartOrangeBrush}"
+                                     Margin="0" Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+                            </StackPanel>
+
+                        </Button>
+
+                        <TextBox Grid.Column="4" x:Name="Amount_Cart_LineIteam" Text="500.00" 
+                                     Foreground="{StaticResource CartBlueBrush}"
+                                     Margin="0" Padding="0"
+                                 Style="{StaticResource Regular_TextBox_VaUp}" 
+                                 />
+
+                    </Grid>

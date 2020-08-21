@@ -1,0 +1,490 @@
+/*
+-- Table: ee_tabletemplate
+
+-- DROP TABLE ee_tabletemplate;
+
+CREATE TABLE ee_tabletemplate
+(
+  ee_tabletemplate_id numeric(10,0) NOT NULL,
+  ad_client_id numeric(10,0) NOT NULL,
+  ad_org_id numeric(10,0) NOT NULL,
+  isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+  created timestamp without time zone NOT NULL DEFAULT now(),
+  createdby numeric(10,0) NOT NULL,
+  updated timestamp without time zone NOT NULL DEFAULT now(),
+  updatedby numeric(10,0) NOT NULL,
+  "name" character varying(60) NOT NULL,
+  isdefault character(1) NOT NULL DEFAULT 'N'::bpchar,
+  "sequence" numeric(10,0),
+  docstatus character(2) NOT NULL DEFAULT 'DR'::bpchar,
+  processed character(1) NOT NULL DEFAULT 'N'::bpchar,
+  description character varying(255),
+  attribute1 character varying(60),
+  attribute2 character varying(60),
+  attribute3 character varying(60),
+  attribute4 character varying(60),
+  attribute5 character varying(60),
+  attribute6 character varying(60),
+  attribute7 character varying(60),
+  attribute8 character varying(60),
+  attribute9 character varying(60),
+  attribute10 character varying(60),
+  CONSTRAINT ee_tabletemplate_pkey PRIMARY KEY (ee_tabletemplate_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ee_tabletemplate OWNER TO adempiere;
+
+*/
+
+/* 2018-10-03
+
+-- Table: ad_client
+
+-- DROP TABLE ad_client;
+
+CREATE TABLE  ad_client
+(
+  id numeric(10,0) NOT NULL,
+  ad_client_id numeric(10,0) NOT NULL,
+  created timestamp without time zone NOT NULL DEFAULT now(),
+  createdby numeric(10,0) NOT NULL,
+  updated timestamp without time zone NOT NULL DEFAULT now(),
+  updatedby numeric(10,0) NOT NULL,
+  attribute1 character varying(60),
+  attribute2 character varying(60),
+  attribute3 character varying(60),
+  attribute4 character varying(60),
+  attribute5 character varying(60),
+  attribute6 character varying(60),
+  attribute7 character varying(60),
+  attribute8 character varying(60),
+  attribute9 character varying(60),
+  attribute10 character varying(60),
+  CONSTRAINT ad_client_pkey PRIMARY KEY (ad_client_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ad_client OWNER TO adempiere;
+
+
+
+-- Table: ad_org
+
+-- DROP TABLE ad_org;
+
+CREATE TABLE ad_org
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+	"name" character varying(250),
+	arabicName	character varying(250),
+	logo	bytea,
+	phone	character varying(60),
+	email	character varying(60),
+	"address"	character varying(60),
+	city	character varying(60),
+	country	character varying(60),
+	postal	character varying(60),
+	weburl	character varying(60),
+	footermessage	character varying(250),
+	arabicfootermessage	character varying(250),
+	termsmessage	character varying(250),
+	arabictermsmessage	character varying(250),
+	displayImage	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT ad_org_pkey PRIMARY KEY (ad_org_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ad_org OWNER TO adempiere;
+
+
+
+-- Table: ad_role
+
+-- DROP TABLE ad_role;
+
+CREATE TABLE ad_role
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	ad_role_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT ad_role_pkey PRIMARY KEY (ad_role_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ad_role OWNER TO adempiere;
+
+-- Table: ad_role_orgaccess
+
+-- DROP TABLE ad_role_orgaccess;
+
+CREATE TABLE ad_role_orgaccess
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	ad_role_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ad_role_orgaccess OWNER TO adempiere;
+
+
+-- Table: m_warehouse
+
+-- DROP TABLE m_warehouse;
+
+CREATE TABLE m_warehouse
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	m_warehouse_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	phone	character varying(60),
+	city	character varying(60),
+	warehouePriceListId	numeric,
+
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT m_warehouse_pkey PRIMARY KEY (m_warehouse_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE m_warehouse OWNER TO adempiere;
+
+
+-- Table: ad_sys_config
+
+-- DROP TABLE ad_sys_config;
+
+CREATE TABLE ad_sys_config
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	costElementId	numeric,
+	currencyId	numeric,
+	currencyCode	character varying(3),
+	cashBookId	numeric,
+	periodId	numeric,
+	paymentTermId	numeric,
+	adTableId	numeric,
+	accountSchemaId	numeric,
+	paymentRule	character(1) NOT NULL DEFAULT 'M'::bpchar,
+	printSalesSummary	character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	printPreBill	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	showComplement	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	isDiscount	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	discPercent	numeric,
+
+	"name" character varying(250),
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ad_sys_config OWNER TO adempiere;
+
+-- Table: ee_MsrManager 
+
+-- DROP TABLE ee_MsrManager;
+
+CREATE TABLE ee_MsrManager
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	msr_code	character varying(60),
+	salesrep_id	numeric,
+
+
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ee_MsrManager OWNER TO adempiere;
+
+
+-- Table: c_bpartner
+
+-- DROP TABLE c_bpartner;
+
+CREATE TABLE c_bpartner
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	c_bpartner_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	searchKey	character varying(60),
+	pricelistId	numeric,
+	isCredit	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	creditAmount	numeric,
+
+
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT c_bpartner_pkey PRIMARY KEY (c_bpartner_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE c_bpartner OWNER TO adempiere;
+
+
+-- Table: m_product_category
+
+-- DROP TABLE m_product_category;
+
+CREATE TABLE m_product_category
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	m_product_category_id numeric(10,0) NOT NULL,
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	searchKey	character varying(60),
+	arabicName	character varying(250),
+	image		character varying(250),
+
+
+
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT m_product_category_pkey PRIMARY KEY (m_product_category_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE m_product_category OWNER TO adempiere;
+
+
+-- Table: m_product
+
+-- DROP TABLE m_product;
+
+CREATE TABLE m_product
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	m_product_id numeric(10,0) NOT NULL,
+	m_product_category_id	numeric,
+
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	searchKey	character varying(60),
+	arabicName	character varying(250),
+	image	character varying(250),
+	scanbyWeight	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	scanbyPrice	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	uomId	numeric,
+	uomName	character varying(60),
+	sopricestd	numeric,
+	currentcostprice	numeric,
+
+
+
+
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60),
+	CONSTRAINT m_product_pkey PRIMARY KEY (m_product_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE m_product OWNER TO adempiere;
+
+
+-- Table: m_product_price
+
+-- DROP TABLE m_product_price;
+
+CREATE TABLE m_product_price
+(
+	id numeric(10,0) NOT NULL,
+	ad_client_id numeric(10,0) NOT NULL,
+	ad_org_id numeric(10,0) NOT NULL,
+	m_product_id numeric(10,0) NOT NULL,
+	pricelistId	numeric,
+	pricestd numeric,
+
+	isactive character(1) NOT NULL DEFAULT 'Y'::bpchar,
+	created timestamp without time zone NOT NULL DEFAULT now(),
+	createdby numeric(10,0) NOT NULL,
+	updated timestamp without time zone NOT NULL DEFAULT now(),
+	updatedby numeric(10,0) NOT NULL,
+
+	"name" character varying(250),
+	isdefault	character(1) NOT NULL DEFAULT 'N'::bpchar,
+	attribute1 character varying(60),
+	attribute2 character varying(60),
+	attribute3 character varying(60),
+	attribute4 character varying(60),
+	attribute5 character varying(60),
+	attribute6 character varying(60),
+	attribute7 character varying(60),
+	attribute8 character varying(60),
+	attribute9 character varying(60),
+	attribute10 character varying(60)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE m_product_price OWNER TO adempiere;
+*/
